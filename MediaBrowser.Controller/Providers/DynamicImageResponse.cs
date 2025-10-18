@@ -23,6 +23,12 @@ namespace MediaBrowser.Controller.Providers
 
         public void SetFormatFromMimeType(string mimeType)
         {
+            if (string.IsNullOrWhiteSpace(mimeType))
+            {
+                Format = ImageFormat.Jpg;
+                return;
+            }
+
             if (mimeType.EndsWith("gif", StringComparison.OrdinalIgnoreCase))
             {
                 Format = ImageFormat.Gif;
